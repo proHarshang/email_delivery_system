@@ -7,20 +7,22 @@
         <link rel="stylesheet" href="/static/styles.css">
     </head>
     <body>
+        <h1>Email Delivery System</h1>
         <div class="container">
-            <h1>Email Delivery System</h1>
             <form id="emailForm">
                 <div class="form-group">
                     <label for="fromEmail">From:</label>
-                    <input type="email" id="fromEmail"
-                        value="your_default_email@gmail.com" readonly>
-                    <button type="button" id="changeEmailBtn">Change
-                        Email</button>
+                    <div class="fieldWithBtn">
+                        <input type="email" id="fromEmail"
+                            value="your_default_email@gmail.com" readonly>
+                        <button type="button" id="changeEmailBtn">Change
+                            Email</button>
+                    </div>
                 </div>
 
                 <div id="receiversList" class="form-group">
                     <label for="toEmail">To:</label>
-                    <div>
+                    <div class="fieldWithBtn">
                         <input type="email" name="receivers[]" class="toEmail"
                             required>
                         <button type="button" id="addReceiverBtn">Add
@@ -35,7 +37,7 @@
 
                 <div class="form-group">
                     <label for="body">Message:</label>
-                    <textarea id="body" required></textarea>
+                    <textarea id="body" rows="7" required></textarea>
                 </div>
 
                 <div class="form-group">
@@ -45,16 +47,13 @@
                 </div>
 
                 <!-- Buttons for new features -->
-                <div class="form-group">
-                    <!-- <button type="button" id="addAttachmentBtn">Add
-                        Attachment</button> -->
+                <div class="btn-group">
+                    <button type="submit">Send Email</button>
                     <button type="button" id="bulkEmailBtn">Send Bulk
                         Emails</button>
                     <button type="button" id="scheduleEmailBtn">Schedule
                         Email</button>
                 </div>
-
-                <button type="submit">Send Email</button>
             </form>
         </div>
 
@@ -63,15 +62,21 @@
             <div class="popup-content">
                 <h2>Send Bulk Emails</h2>
                 <form id="bulkEmailForm">
-                    <label for="numEmails">Number of Emails:</label>
-                    <input type="number" id="numEmails" required>
+                    <div class="form-group">
+                        <label for="numEmails">Number of Emails:</label>
+                        <input type="number" id="numEmails" required>
+                    </div>
 
-                    <label for="interval">Interval (minutes):</label>
-                    <input type="number" id="interval" required>
+                    <div class="form-group">
+                        <label for="interval">Interval (minutes):</label>
+                        <input type="number" id="interval" required>
+                    </div>
 
-                    <button type="submit">Start Bulk Email</button>
-                    <button type="button"
-                        id="closeBulkEmailPopupBtn">Close</button>
+                    <div class="btn-group">
+                        <button type="submit">Start Bulk Email</button>
+                        <button type="button" class="closePopupBtn"
+                            id="closeBulkEmailPopupBtn">Close</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -81,13 +86,16 @@
             <div class="popup-content">
                 <h2>Schedule Email</h2>
                 <form id="scheduleEmailForm">
-                    <label for="scheduleTime">Schedule Time:</label>
-                    <input type="datetime-local" id="scheduleTime"
-                        required>
-
-                    <button type="submit">Schedule</button>
-                    <button type="button"
-                        id="closeScheduleEmailPopupBtn">Close</button>
+                    <div class="form-group">
+                        <label for="scheduleTime">Schedule Time:</label>
+                        <input type="datetime-local" id="scheduleTime"
+                            required>
+                    </div>
+                    <div class="btn-group">
+                        <button type="submit">Schedule</button>
+                        <button type="button" class="closePopupBtn"
+                            id="closeScheduleEmailPopupBtn">Close</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -97,14 +105,19 @@
             <div class="popup-content">
                 <h2>Change Sender Email</h2>
                 <form id="changeEmailForm">
-                    <label for="newEmail">New Email:</label>
-                    <input type="email" id="newEmail" required>
-
-                    <label for="emailPassword">Password:</label>
-                    <input type="password" id="emailPassword" required>
-
-                    <button type="submit">Save</button>
-                    <button type="button" id="closePopupBtn">Close</button>
+                    <div class="form-group">
+                        <label for="newEmail">New Email:</label>
+                        <input type="email" id="newEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailPassword">Password:</label>
+                        <input type="password" id="emailPassword" required>
+                    </div>
+                    <div class="btn-group">
+                        <button type="submit">Save</button>
+                        <button type="button" class="closePopupBtn"
+                            id="closePopupBtn">Close</button>
+                    </div>
                 </form>
             </div>
         </div>

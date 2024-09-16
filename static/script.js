@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const closePopupBtn = document.getElementById('closePopupBtn');
     const changeEmailForm = document.getElementById('changeEmailForm');
 
-    
+
     const bulkEmailBtn = document.getElementById('bulkEmailBtn');
     const scheduleEmailBtn = document.getElementById('scheduleEmailBtn');
     const emailForm = document.getElementById('emailForm');
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const bulkEmailForm = document.getElementById('bulkEmailForm');
     const scheduleEmailPopup = document.getElementById('scheduleEmailPopup');
     const closeScheduleEmailPopupBtn = document.getElementById('closeScheduleEmailPopupBtn');
-    const scheduleEmailForm = document.getElementById('scheduleEmailForm');    
+    const scheduleEmailForm = document.getElementById('scheduleEmailForm');
     const attachments = document.getElementById('attachments');
 
     let maxReceivers = 5;
@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const currentReceivers = receiversList.querySelectorAll('.toEmail').length;
         if (currentReceivers < maxReceivers) {
             const newReceiver = document.createElement('div');
+            newReceiver.classList.add('fieldWithBtn', 'receiver')
             newReceiver.innerHTML = `
                 <input type="email" name="receivers[]" class="toEmail" required>
                 <button type="button" class="removeReceiverBtn">Remove</button>
