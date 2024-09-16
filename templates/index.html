@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mail Delivery System</title>
+        <link rel="stylesheet" href="/static/styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Email Delivery System</h1>
+            <form id="emailForm">
+                <div class="form-group">
+                    <label for="fromEmail">From:</label>
+                    <input type="email" id="fromEmail"
+                        value="your_default_email@gmail.com" readonly>
+                    <button type="button" id="changeEmailBtn">Change
+                        Email</button>
+                </div>
+
+                <div id="receiversList" class="form-group">
+                    <label for="toEmail">To:</label>
+                    <div>
+                        <input type="email" name="receivers[]" class="toEmail"
+                            required>
+                        <button type="button" id="addReceiverBtn">Add
+                            More</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject:</label>
+                    <input type="text" id="subject" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="body">Message:</label>
+                    <textarea id="body" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="attachments">Attachments:</label>
+                    <input type="file" id="attachments" name="attachments"
+                        multiple>
+                </div>
+
+                <!-- Buttons for new features -->
+                <div class="form-group">
+                    <!-- <button type="button" id="addAttachmentBtn">Add
+                        Attachment</button> -->
+                    <button type="button" id="bulkEmailBtn">Send Bulk
+                        Emails</button>
+                    <button type="button" id="scheduleEmailBtn">Schedule
+                        Email</button>
+                </div>
+
+                <button type="submit">Send Email</button>
+            </form>
+        </div>
+
+        <!-- Popup for bulk email -->
+        <div id="bulkEmailPopup" class="popup hidden">
+            <div class="popup-content">
+                <h2>Send Bulk Emails</h2>
+                <form id="bulkEmailForm">
+                    <label for="numEmails">Number of Emails:</label>
+                    <input type="number" id="numEmails" required>
+
+                    <label for="interval">Interval (minutes):</label>
+                    <input type="number" id="interval" required>
+
+                    <button type="submit">Start Bulk Email</button>
+                    <button type="button"
+                        id="closeBulkEmailPopupBtn">Close</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Popup for scheduling email -->
+        <div id="scheduleEmailPopup" class="popup hidden">
+            <div class="popup-content">
+                <h2>Schedule Email</h2>
+                <form id="scheduleEmailForm">
+                    <label for="scheduleTime">Schedule Time:</label>
+                    <input type="datetime-local" id="scheduleTime"
+                        required>
+
+                    <button type="submit">Schedule</button>
+                    <button type="button"
+                        id="closeScheduleEmailPopupBtn">Close</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Popup for changing sender's email -->
+        <div id="emailPopup" class="popup hidden">
+            <div class="popup-content">
+                <h2>Change Sender Email</h2>
+                <form id="changeEmailForm">
+                    <label for="newEmail">New Email:</label>
+                    <input type="email" id="newEmail" required>
+
+                    <label for="emailPassword">Password:</label>
+                    <input type="password" id="emailPassword" required>
+
+                    <button type="submit">Save</button>
+                    <button type="button" id="closePopupBtn">Close</button>
+                </form>
+            </div>
+        </div>
+
+        <script src="/static/script.js"></script>
+    </body>
+</html>
