@@ -1,3 +1,4 @@
 Flask
 email-validator
 APScheduler
+gunicorn
