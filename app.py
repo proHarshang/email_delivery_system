@@ -6,6 +6,7 @@ from werkzeug.utils import secure_filename
 from datetime import datetime, timedelta
 import os
 import json
+import sqlite3
 
 app = Flask(__name__)
 
@@ -22,6 +23,34 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def allowed_file(filename):
         ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp', 'pdf', 'doc', 'docx'}
         return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+# SQLite DB functions 
+def init_db():
+    conn = sqlite3.connect('emails.db')
+    c = conn.cursor()
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS email_logs (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            sender TEXT,
+            receivers TEXT,
+            subject TEXT,
+            time_sent DATETIME
+        )
+    ''')
+    conn.commit()
+    conn.close()
+
+init_db()  # Call this at the start of your app
+
+def log_email(sender, receivers, subject):
+    conn = sqlite3.connect('emails.db')
+    c = conn.cursor()
+    c.execute('''
+        INSERT INTO email_logs (sender, receivers, subject, time_sent)
+        VALUES (?, ?, ?, datetime('now'))
+    ''', (sender, ', '.join(receivers), subject))
+    conn.commit()
+    conn.close()
 
 
 # Email sending function
@@ -49,6 +78,9 @@ def send_email(sender, password, receivers, subject, body, attachments=[]):
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login(sender, password)
         smtp.send_message(msg)
+        
+    # Log email    
+    log_email(sender, receivers, subject)
 
 @app.route('/')
 def index():
@@ -87,7 +119,6 @@ def send_mail():
     except Exception as e:
         print("Error occurred:", str(e))  # Print the error for debugging
         return jsonify({"message": str(e)}), 400
-
 
 @app.route('/send_bulk_email', methods=['POST'])
 def send_bulk_email():
@@ -175,6 +206,23 @@ def schedule_email():
         print("Error occurred:", str(e))  # Print the error for debugging
         return jsonify({"message": str(e)}), 400
 
+@app.route('/view_emails')
+def view_emails():
+    conn = sqlite3.connect('emails.db')
+    c = conn.cursor()
+    c.execute('SELECT id, sender, receivers, subject, time_sent FROM email_logs')
+    emails = c.fetchall()
+    conn.close()
+    return render_template('view_emails.html', emails=emails)
+
+@app.route('/delete_email/<int:id>', methods=['POST'])
+def delete_email(id):
+    conn = sqlite3.connect('emails.db')
+    c = conn.cursor()
+    c.execute('DELETE FROM email_logs WHERE id = ?', (id,))
+    conn.commit()
+    conn.close()
+    return jsonify({"message": "Email deleted successfully!"})
 
 if __name__ == '__main__':
     app.run(debug=True)

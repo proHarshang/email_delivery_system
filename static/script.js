@@ -197,4 +197,5 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('Error:', error);
             });
     });
+
 });

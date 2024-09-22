@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/styles.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <title>Sent Emails</title>
+    </head>
+    <body>
+        <h1>Sent Emails</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Subject</th>
+                    <th>Time Sent</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for email in emails %}
+                <tr id="email-{{ email[0] }}">
+                    <td>{{ email[0] }}</td>
+                    <td>{{ email[1] }}</td>
+                    <td>{{ email[2] }}</td>
+                    <td>{{ email[3] }}</td>
+                    <td>{{ email[4] }}</td>
+                    <td>
+                        <button class="delete-data-btn"
+                            data-id="{{ email[0] }}">Delete</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <script src="/static/script.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('.delete-data-btn').click(function() {
+                    var id = $(this).data('id');  // Get the ID from the button's data attribute
+    
+                    if (confirm("Are you sure you want to delete this email?")) {
+                        $.ajax({
+                            url: `/delete_email/${id}`,
+                            type: 'POST',
+                            success: function(response) {
+                                alert(response.message);  // Show an alert with the response message
+                                $(`#email-${id}`).remove();  // Remove the row from the table
+                            },
+                            error: function() {
+                                alert('Failed to delete the email. Please try again.');
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
