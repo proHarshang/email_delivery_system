@@ -49,6 +49,7 @@ button {
   cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;
+  color: #fff;
 }
 
 button:hover {
@@ -171,4 +172,61 @@ input[type="file"] {
 
 .hidden {
   display: none;
+}
+
+.next-page-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--primaryColor);
+  color: white;
+  border: none;
+  border-radius: 10%;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 1000;
+}
+
+.next-page-btn:hover {
+  background-color: var(--accentColor);
+  ;
+}
+
+
+/* Table Styles */
+
+.styled-table {
+  width: 90%;
+  margin: auto;
+  border-collapse: collapse;
+  font-size: 18px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background-color: var(--primaryColor);
+  color: #fff;
+  overflow: scroll;
+}
+
+.styled-table thead tr {
+  background-color: var(--secondaryColor);
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  white-space: nowrap;
+  padding: 12px 15px;
+  text-align: center;
+  max-width: 600px ;
+  word-break: break-all;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid var(--accentColor);
+}
+
+.delete-data-btn:hover{
+  background-color: red !important;
 }

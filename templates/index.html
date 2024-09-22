@@ -1,127 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mail Delivery System</title>
-        <link rel="stylesheet" href="/static/styles.css">
-    </head>
-    <body>
-        <h1>Email Delivery System</h1>
-        <div class="container">
-            <form id="emailForm">
-                <div class="form-group">
-                    <label for="fromEmail">From:</label>
-                    <div class="fieldWithBtn">
-                        <input type="email" id="fromEmail"
-                            value="your_default_email@gmail.com" readonly>
-                        <button type="button" id="changeEmailBtn">Change
-                            Email</button>
-                    </div>
-                </div>
-
-                <div id="receiversList" class="form-group">
-                    <label for="toEmail">To:</label>
-                    <div class="fieldWithBtn">
-                        <input type="email" name="receivers[]" class="toEmail"
-                            required>
-                        <button type="button" id="addReceiverBtn">Add
-                            More</button>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="subject">Subject:</label>
-                    <input type="text" id="subject" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="body">Message:</label>
-                    <textarea id="body" rows="7" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="attachments">Attachments:</label>
-                    <input type="file" id="attachments" name="attachments"
-                        multiple>
-                </div>
-
-                <!-- Buttons for new features -->
-                <div class="btn-group">
-                    <button type="submit">Send Email</button>
-                    <button type="button" id="bulkEmailBtn">Send Bulk
-                        Emails</button>
-                    <button type="button" id="scheduleEmailBtn">Schedule
-                        Email</button>
-                </div>
-            </form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mail Delivery System</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <h1>Email Delivery System</h1>
+    <div class="container">
+      <form id="emailForm">
+        <div class="form-group">
+          <label for="fromEmail">From:</label>
+          <div class="fieldWithBtn">
+            <input type="email" id="fromEmail" value="your_default_email@gmail.com" readonly />
+            <button type="button" id="changeEmailBtn">Change Email</button>
+          </div>
         </div>
 
-        <!-- Popup for bulk email -->
-        <div id="bulkEmailPopup" class="popup hidden">
-            <div class="popup-content">
-                <h2>Send Bulk Emails</h2>
-                <form id="bulkEmailForm">
-                    <div class="form-group">
-                        <label for="numEmails">Number of Emails:</label>
-                        <input type="number" id="numEmails" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="interval">Interval (minutes):</label>
-                        <input type="number" id="interval" required>
-                    </div>
-
-                    <div class="btn-group">
-                        <button type="submit">Start Bulk Email</button>
-                        <button type="button" class="closePopupBtn"
-                            id="closeBulkEmailPopupBtn">Close</button>
-                    </div>
-                </form>
-            </div>
+        <div id="receiversList" class="form-group">
+          <label for="toEmail">To:</label>
+          <div class="fieldWithBtn">
+            <input type="email" name="receivers[]" class="toEmail" required />
+            <button type="button" id="addReceiverBtn">Add More</button>
+          </div>
         </div>
 
-        <!-- Popup for scheduling email -->
-        <div id="scheduleEmailPopup" class="popup hidden">
-            <div class="popup-content">
-                <h2>Schedule Email</h2>
-                <form id="scheduleEmailForm">
-                    <div class="form-group">
-                        <label for="scheduleTime">Schedule Time:</label>
-                        <input type="datetime-local" id="scheduleTime"
-                            required>
-                    </div>
-                    <div class="btn-group">
-                        <button type="submit">Schedule</button>
-                        <button type="button" class="closePopupBtn"
-                            id="closeScheduleEmailPopupBtn">Close</button>
-                    </div>
-                </form>
-            </div>
+        <div class="form-group">
+          <label for="subject">Subject:</label>
+          <input type="text" id="subject" required />
         </div>
 
-        <!-- Popup for changing sender's email -->
-        <div id="emailPopup" class="popup hidden">
-            <div class="popup-content">
-                <h2>Change Sender Email</h2>
-                <form id="changeEmailForm">
-                    <div class="form-group">
-                        <label for="newEmail">New Email:</label>
-                        <input type="email" id="newEmail" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="emailPassword">Password:</label>
-                        <input type="password" id="emailPassword" required>
-                    </div>
-                    <div class="btn-group">
-                        <button type="submit">Save</button>
-                        <button type="button" class="closePopupBtn"
-                            id="closePopupBtn">Close</button>
-                    </div>
-                </form>
-            </div>
+        <div class="form-group">
+          <label for="body">Message:</label>
+          <textarea id="body" rows="7" required></textarea>
         </div>
 
-        <script src="/static/script.js"></script>
-    </body>
+        <div class="form-group">
+          <label for="attachments">Attachments:</label>
+          <input type="file" id="attachments" name="attachments" multiple />
+        </div>
+
+        <!-- Buttons for new features -->
+        <div class="btn-group">
+          <button type="submit">Send Email</button>
+          <button type="button" id="bulkEmailBtn">Send Bulk Emails</button>
+          <button type="button" id="scheduleEmailBtn">Schedule Email</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Popup for bulk email -->
+    <div id="bulkEmailPopup" class="popup hidden">
+      <div class="popup-content">
+        <h2>Send Bulk Emails</h2>
+        <form id="bulkEmailForm">
+          <div class="form-group">
+            <label for="numEmails">Number of Emails:</label>
+            <input type="number" id="numEmails" required />
+          </div>
+
+          <div class="form-group">
+            <label for="interval">Interval (minutes):</label>
+            <input type="number" id="interval" required />
+          </div>
+
+          <div class="btn-group">
+            <button type="submit">Start Bulk Email</button>
+            <button type="button" class="closePopupBtn" id="closeBulkEmailPopupBtn">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Popup for scheduling email -->
+    <div id="scheduleEmailPopup" class="popup hidden">
+      <div class="popup-content">
+        <h2>Schedule Email</h2>
+        <form id="scheduleEmailForm">
+          <div class="form-group">
+            <label for="scheduleTime">Schedule Time:</label>
+            <input type="datetime-local" id="scheduleTime" required />
+          </div>
+          <div class="btn-group">
+            <button type="submit">Schedule</button>
+            <button type="button" class="closePopupBtn" id="closeScheduleEmailPopupBtn">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Popup for changing sender's email -->
+    <div id="emailPopup" class="popup hidden">
+      <div class="popup-content">
+        <h2>Change Sender Email</h2>
+        <form id="changeEmailForm">
+          <div class="form-group">
+            <label for="newEmail">New Email:</label>
+            <input type="email" id="newEmail" required />
+          </div>
+          <div class="form-group">
+            <label for="emailPassword">Password:</label>
+            <input type="password" id="emailPassword" required />
+          </div>
+          <div class="btn-group">
+            <button type="submit">Save</button>
+            <button type="button" class="closePopupBtn" id="closePopupBtn">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <button class="next-page-btn"  onclick="window.location.href='/view_emails'">View Emails</button>
+
+    <script src="/static/script.js"></script>
+  </body>
 </html>
