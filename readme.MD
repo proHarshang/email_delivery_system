@@ -30,6 +30,7 @@ This project is a simple email delivery system built with Flask, allowing users 
    cd email_delivery_system
 
 2. Install required packages:
+    ```bash
     pip install Flask
     pip install APScheduler
 
