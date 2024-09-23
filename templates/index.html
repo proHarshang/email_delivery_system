@@ -13,8 +13,9 @@
         <div class="form-group">
           <label for="fromEmail">From:</label>
           <div class="fieldWithBtn">
-            <input type="email" id="fromEmail" value="your_default_email@gmail.com" readonly />
-            <button type="button" id="changeEmailBtn">Change Email</button>
+            <input type="email" id="fromEmail"
+              value="your_email@gmail.com" readonly />
+            <button type="button" id="changeEmailBtn">Change</button>
           </div>
         </div>
 
@@ -22,7 +23,7 @@
           <label for="toEmail">To:</label>
           <div class="fieldWithBtn">
             <input type="email" name="receivers[]" class="toEmail" required />
-            <button type="button" id="addReceiverBtn">Add More</button>
+            <button type="button" id="addReceiverBtn">Add</button>
           </div>
         </div>
 
@@ -67,7 +68,8 @@
 
           <div class="btn-group">
             <button type="submit">Start Bulk Email</button>
-            <button type="button" class="closePopupBtn" id="closeBulkEmailPopupBtn">Close</button>
+            <button type="button" class="closePopupBtn"
+              id="closeBulkEmailPopupBtn">Close</button>
           </div>
         </form>
       </div>
@@ -84,7 +86,8 @@
           </div>
           <div class="btn-group">
             <button type="submit">Schedule</button>
-            <button type="button" class="closePopupBtn" id="closeScheduleEmailPopupBtn">Close</button>
+            <button type="button" class="closePopupBtn"
+              id="closeScheduleEmailPopupBtn">Close</button>
           </div>
         </form>
       </div>
@@ -105,12 +108,14 @@
           </div>
           <div class="btn-group">
             <button type="submit">Save</button>
-            <button type="button" class="closePopupBtn" id="closePopupBtn">Close</button>
+            <button type="button" class="closePopupBtn"
+              id="closePopupBtn">Close</button>
           </div>
         </form>
       </div>
     </div>
-    <button class="next-page-btn"  onclick="window.location.href='/view_emails'">View Emails</button>
+    <button class="next-page-btn"
+      onclick="window.location.href='/view_emails'">View Emails</button>
 
     <script src="/static/script.js"></script>
   </body>

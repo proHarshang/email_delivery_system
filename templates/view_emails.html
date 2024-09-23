@@ -7,7 +7,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>View Emails</title>
   </head>
-  <body>
+  <body class="view-emails-body">
     <h1>View Emails</h1>
     <table class="styled-table">
       <thead>
@@ -29,13 +29,15 @@
           <td>{{ email[3] }}</td>
           <td>{{ email[4] }}</td>
           <td>
-            <button class="delete-data-btn" data-id="{{ email[0] }}">Delete</button>
+            <button class="delete-data-btn"
+              data-id="{{ email[0] }}">Delete</button>
           </td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
-    <button class="next-page-btn" onclick="window.location.href='/'">Sent Emails</button>
+    <button class="next-page-btn" onclick="window.location.href='/'">Sent
+      Emails</button>
 
     <script src="/static/script.js"></script>
     <script>

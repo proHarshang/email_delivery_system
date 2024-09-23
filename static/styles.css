@@ -41,6 +41,10 @@ body::-webkit-scrollbar-thumb {
   border-radius: 20px;
 }
 
+.view-emails-body {
+  overflow: scroll;
+}
+
 button {
   background-color: var(--secondaryColor);
   border: none;
@@ -49,7 +53,6 @@ button {
   cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;
-  color: #fff;
 }
 
 button:hover {
@@ -69,6 +72,7 @@ h1 {
   width: fit-content;
   margin: 50px auto;
   color: white;
+  font-size: 5.5vmin;
 }
 
 .container {
@@ -76,7 +80,7 @@ h1 {
   box-shadow: 0 0 35px -12px rgba(0, 0, 0, 1);
   border-radius: 18px;
   padding: 40px;
-  width: 95%;
+  width: 72%;
   margin: auto;
   max-width: 570px;
 }
@@ -178,22 +182,20 @@ input[type="file"] {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: var(--primaryColor);
+  background-color: #070f11;
   color: white;
   border: none;
-  border-radius: 10%;
+  border-radius: 8px;
   padding: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   z-index: 1000;
 }
 
 .next-page-btn:hover {
   background-color: var(--accentColor);
-  ;
 }
-
 
 /* Table Styles */
 
@@ -219,7 +221,7 @@ input[type="file"] {
   white-space: nowrap;
   padding: 12px 15px;
   text-align: center;
-  max-width: 600px ;
+  max-width: 600px;
   word-break: break-all;
 }
 
@@ -227,6 +229,31 @@ input[type="file"] {
   border-bottom: 1px solid var(--accentColor);
 }
 
-.delete-data-btn:hover{
+.delete-data-btn:hover {
   background-color: red !important;
+}
+
+@media (max-width: 768px) {
+  .container {
+    font-size: 12px;
+    padding: 30px;
+  }
+
+  input,
+  textarea {
+    font-size: 12px;
+  }
+
+  button {
+    font-size: 12px;
+    padding: 10px 15px;
+  }
+
+  .fieldWithBtn {
+    gap: 5px;
+  }
+
+  h1 {
+    font-size: 18px;
+  }
 }
